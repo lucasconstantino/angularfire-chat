@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularFire Chat</title>
+  
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body ng-app="AngularFireChat">
+
+  <div id="wrap">
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>AngularFire Chat</h1>
+      </div>
+
+      <div ng-controller="ChatCtrl">
+        <form ng-submit="talk()">
+          <input ng-model="message" type="text" class="form-control" placeholder="Say somethin'!">
+        </form>
+        
+        <ul id="messages">
+          <li ng-repeat="message in chat.messages | reverse">
+            <strong class="time">{{message.time | parseDate }} -</strong>
+            <span>{{message.text}}</span>
+          </li>
+          <li id="welcome">Welcome!</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted credit">Checkout the source code at <a href="https://github.com/lucascsilva/angularfire-chat">GitHub</a>.</p>
+    </div>
+  </div>
+
+  <!-- Dependency script loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <script src='https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js'></script>
+
+  <!-- Application scripts -->
+  <script src="app/app.js"></script>
+</body>
+</html>
